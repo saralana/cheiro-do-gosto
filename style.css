@@ -173,6 +173,10 @@ strong::selection{
     color: var(--back) !important;
 }
 
+h1 {
+  font-size: 25px;
+}
+
 h2 {
     font-size: 20px;
     /*color: #f18388;*/
