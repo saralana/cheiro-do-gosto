@@ -64,12 +64,12 @@
     var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/saralgc/clhkcc2vc01lp01qy8fmi7wmn',
-      center: [-43.96, -19.87], // starting position
+      center: [-43.95857, -19.87472], // starting position
       zoom: 11.8,// starting zoom
       minZoom: 11.3,
       maxZoom: 14,  
       pitch: 0, // pitc3 in degrees
-      bearing: -81.6, // bearing in degrees
+      bearing: -92, // bearing in degrees
       transformRequest: transformRequest,
       // maxBounds: bounds // Set the map's geographical boundaries.
     });
@@ -477,7 +477,7 @@
                             'type': 'Feature',
                             'geometry': {
                             'type': 'Point',
-                            'coordinates': [-43.926182, -19.9191]
+                            'coordinates': [-43.921211, -19.916446]
                             }
                         }]
                     }
@@ -588,6 +588,47 @@
         );
 
     });
+
+
+    // quintal teste  -19.86184 -44.00128
+    map.on('load', () => {
+        // Load an image from an external URL.
+        map.loadImage(
+        'assets/quintal.png',
+            (error, image) => {
+                if (error) throw error;
+                // Add the image to the map style.
+                map.addImage('quintal', image);
+                // Add a data source containing one point feature.
+                map.addSource('point5', {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-44.02694, -19.87214]
+                            }
+                        }]
+                    }
+                });
+                // Add a layer to use the image to represent the data.
+                map.addLayer({
+                    'id': 'quintal',
+                    'type': 'symbol',
+                    'source': 'point5', 
+                    'layout': {
+                        'icon-anchor': 'top-left', 
+                        "icon-allow-overlap": true,
+                        'icon-image': 'quintal',
+                        'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.1, 14, 1.2]
+                    }
+                });
+            }
+        );
+    });  
 
     // map.scrollZoom.disable(); 
 
