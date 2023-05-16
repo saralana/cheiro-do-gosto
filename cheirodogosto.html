@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cheiro do Gosto</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+  <!-- Google fonts-->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://npmcdn.com/csv2geojson@latest/csv2geojson.js"></script>
+  <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.css" type="text/css" />
+  
+</head>
+    
+<body>
+    
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <div class="sidebar-content">
+
+    </div>
+</div>
+
+
+<img src="assets/logo.png" class="openbtn" onclick="openNav()"> 
+    
+    
+    
+<div id="map"></div>
+  
+  <script>
+    var geocoder = new MapboxGeocoder({
+       accessToken: mapboxgl.accessToken,
+       mapboxgl: mapboxgl
+    });
+    
+    var transformRequest = (url, resourceType) => {
+      var isMapboxRequest =
+        url.slice(8, 22) === "api.mapbox.com" ||
+        url.slice(10, 26) === "tiles.mapbox.com";
+      return {
+        url: isMapboxRequest
+          ? url.replace("?", "?pluginName=sheetMapper&")
+          : url
+      };
+    };
+      
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWxnYyIsImEiOiJja2NjbTAyczkwNXA3Mnlscm5nbjN5OHZiIn0.yNcJkPBSugRlIeGkXDRlZw'; //Mapbox token 
+    //const bounds = [
+    //    [-44.1, -19.3],// Southwest coordinates
+    //    [-43.77, -20.5] // Northeast coordinates    
+    //];
+    var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/saralgc/clhkcc2vc01lp01qy8fmi7wmn',
+      center: [-43.96, -19.87], // starting position
+      zoom: 11.8,// starting zoom
+      minZoom: 11.3,
+      maxZoom: 14,  
+      pitch: 0, // pitc3 in degrees
+      bearing: -81.6, // bearing in degrees
+      transformRequest: transformRequest,
+      // maxBounds: bounds // Set the map's geographical boundaries.
+    });
+    
+    $(document).ready(function () {
+      $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        //https://www.mapbox.com/impact-tools/sheet-mapper
+        url:'assets/boiada.csv',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+
+
+      function makeGeoJSON(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+          
+          map.on('load', function () {
+            map.loadImage(
+             'assets/vaca.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('1', image);
+            });
+              
+            
+            map.loadImage(
+             'assets/vaca2.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('2', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca3.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('3', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca4.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('4', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca5.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('5', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca6.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('6', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca7.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('7', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca8.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('8', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca9.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('9', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca10.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('10', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca11.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('11', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca12.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('12', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca13.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('13', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca14.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('14', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca15.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('15', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca16.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('16', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca17.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('17', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca18.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('18', image);
+            });  
+              
+            map.loadImage(
+             'assets/vaca19.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('19', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca20.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('20', image);
+            });
+              
+            map.loadImage(
+             'assets/vaca21.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('21', image);
+            });    
+              
+            map.addLayer({
+              'id': 'csvData',
+              'type': 'symbol',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+              'layout': {
+                'icon-image': '{Vaca}',
+                'icon-anchor': 'bottom-left', // point of the icon which will correspond to marker's location
+                "icon-allow-overlap": true,
+                //'icon-size': 0.025
+              }
+             });
+
+            // When a click event occurs on a feature in the csvData layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            
+            map.on('click', 'csvData', function (e) {
+              var coordinates = e.features[0].geometry.coordinates.slice();
+              var description = `<audio controls` + e.features[0].properties.Vaca + `()" style="width:100%;" controlsList="nodownload" autoplay><source src="assets/sounds/` + e.features[0].properties.Audio + `.mp3" type="audio/mpeg"></audio>` + `<h3>` +  e.features[0].properties.Dia + ' | ' + e.features[0].properties.Lugar + `</h3>` + `<h2>` + e.features[0].properties.Titulo + `</h2>`+ `<p>` + e.features[0].properties.Descricao + `</p>` ;
+                
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+                
+              //add Popup to map
+              new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+            });
+               
+              
+         map.setLayoutProperty('csvData', 'icon-size', 
+            ['interpolate', ['linear'], ['zoom'],
+              0,
+              //TAMANHO AO ZOOM 0
+              0.04,
+              8,
+              //TAMANHO AO ZOOM 7
+              0.12,
+              11,
+              0.25,
+              24,
+              //TAMANHO AO ZOOM 24
+              0.35
+            ]);
+              
+              
+          });
+
+        });
+      };
+      
+      
+    });
+
+      
+      // SANTA TEREZA
+       
+        map.on('load', () => {
+            map.addSource('radar', {
+                'type': 'image',
+                'url': 'assets/santa_tereza.png',
+                'coordinates': [
+                    
+                    [-43.927630, -19.9], //noroeste [oeste, norte]
+                    [-43.9, -19.9], //nordeste [leste, norte]
+                    [-43.9, -19.921], //sudeste  [leste, sul]
+                    [-43.927630, -19.921] //sudoeste  [oeste, sul]             
+                ]
+                })
+                map.addLayer({
+                    id: 'radar-layer',
+                    'type': 'raster',
+                    'source': 'radar',
+                    'paint': {
+                    'raster-fade-duration': 0
+                }
+            });
+            
+            
+        }); 
+      
+            
+      // CONCORDIA
+       
+        map.on('load', () => {
+            map.addSource('concordia', {
+                'type': 'image',
+                'url': 'assets/concordia.png',
+                'coordinates': [
+                    [-43.945709, -19.88],
+                    [-43.925, -19.88], 
+                    [-43.925, -19.905], 
+                    [-43.945709, -19.905] 
+                  
+                ]
+                })
+                map.addLayer({
+                    id: 'represa-layer',
+                    'type': 'raster',
+                    'source': 'concordia',
+                    'paint': {
+                    'raster-fade-duration': 0
+                }
+            });
+            
+            
+        }); 
+
+           // PAPAGAIO
+       
+           map.on('load', () => {
+            map.addSource('papagaio', {
+                'type': 'image',
+                'url': 'assets/papagaio.png',
+                'coordinates': [
+                    [-43.96, -19.9476],
+                    [-43.94033, -19.9476], 
+                    [-43.94033, -19.98], 
+                    [-43.96, -19.98] 
+                  
+                ]
+                })
+                map.addLayer({
+                    id: 'papagaio-layer',
+                    'type': 'raster',
+                    'source': 'papagaio',
+                    'paint': {
+                    'raster-fade-duration': 0
+                }
+            });
+            
+            
+        }); 
+ 
+           // AREIAS
+       
+           map.on('load', () => {
+            map.addSource('areias', {
+                'type': 'image',
+                'url': 'assets/areias.png',
+                'coordinates': [
+                    [-44.018, -19.748],
+                    [-43.978, -19.748], 
+                    [-43.978, -19.777], 
+                    [-44.018, -19.777] 
+                  
+                ]
+                })
+                map.addLayer({
+                    id: 'areias-layer',
+                    'type': 'raster',
+                    'source': 'areias',
+                    'paint': {
+                    'raster-fade-duration': 0
+                }
+            });
+            
+            
+        });      
+      
+   // ZOOM
+      map.addControl(new mapboxgl.NavigationControl(), 'top-right'); // disable map zoom when using scroll
+    //  map.scrollZoom.disable(); 
+    
+      
+      //IMAGENS      
+      //seta papagaio
+      map.on('load', () => {
+        // Load an image from an external URL.
+        map.loadImage(
+        'assets/seta_papagaio.png',
+            (error, image) => {
+                if (error) throw error;
+
+                // Add the image to the map style.
+                map.addImage('seta_papagaio', image);
+
+                // Add a data source containing one point feature.
+                map.addSource('point', {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-43.956, -19.973]
+                            }
+                        }]
+                    }
+                });
+
+                // Add a layer to use the image to represent the data.
+                map.addLayer({
+                    'id': 'seta_papagaio',
+                    'type': 'symbol',
+                    'source': 'point', 
+                    'layout': {
+                        'icon-anchor': 'bottom', 
+                        "icon-allow-overlap": true,
+                        'icon-image': 'seta_papagaio',
+                        'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.2, 18, 1.2]
+                    }
+                });
+            }
+        );
+
+    });
+
+     // seta santa tereza
+     map.on('load', () => {
+        // Load an image from an external URL.
+        map.loadImage(
+        'assets/seta_santa_tereza.png',
+            (error, image) => {
+                if (error) throw error;
+
+                // Add the image to the map style.
+                map.addImage('seta_santa_tereza', image);
+
+                // Add a data source containing one point feature.
+                map.addSource('point2', {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-43.926182, -19.9191]
+                            }
+                        }]
+                    }
+                });
+
+                // Add a layer to use the image to represent the data.
+                map.addLayer({
+                    'id': 'seta_santa_tereza',
+                    'type': 'symbol',
+                    'source': 'point2', 
+                    'layout': {
+                        'icon-anchor': 'top-right', 
+                        "icon-allow-overlap": true,
+                        'icon-image': 'seta_santa_tereza',
+                        'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.1, 18, 1.2]
+                    }
+                });
+            }
+        );
+
+    });
+
+
+     // seta concordia
+     map.on('load', () => {
+        // Load an image from an external URL.
+        map.loadImage(
+        'assets/seta_concordia.png',
+            (error, image) => {
+                if (error) throw error;
+
+                // Add the image to the map style.
+                map.addImage('seta_concordia', image);
+
+                // Add a data source containing one point feature.
+                map.addSource('point3', {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-43.941908, -19.890846]
+                            }
+                        }]
+                    }
+                });
+
+                // Add a layer to use the image to represent the data.
+                map.addLayer({
+                    'id': 'seta_concordia',
+                    'type': 'symbol',
+                    'source': 'point3', 
+                    'layout': {
+                        'icon-anchor': 'bottom-left', 
+                        "icon-allow-overlap": true,
+                        'icon-image': 'seta_concordia',
+                        'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.23, 18, 1.2]
+                    }
+                });
+            }
+        );
+
+    });
+
+     // seta areias
+     map.on('load', () => {
+        // Load an image from an external URL.
+        map.loadImage(
+        'assets/seta_areias.png',
+            (error, image) => {
+                if (error) throw error;
+
+                // Add the image to the map style.
+                map.addImage('seta_areias', image);
+
+                // Add a data source containing one point feature.
+                map.addSource('point4', {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-43.984135, -19.770205]
+                            }
+                        }]
+                    }
+                });
+
+                // Add a layer to use the image to represent the data.
+                map.addLayer({
+                    'id': 'seta_areias',
+                    'type': 'symbol',
+                    'source': 'point4', 
+                    'layout': {
+                        'icon-anchor': 'top-right', 
+                        "icon-allow-overlap": true,
+                        'icon-image': 'seta_areias',
+                        'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.23, 18, 1.2]
+                    }
+                });
+            }
+        );
+
+    });
+
+    // map.scrollZoom.disable(); 
+
+   </script>
+    
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "350px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+}
+
+</script>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+          
+</body>
+
+</html>
