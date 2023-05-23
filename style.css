@@ -1,6 +1,10 @@
 :root {
-  --color: #30ac67;
-  --back: #f8f4ed;
+  --verde: #416544;
+  --creme: #f8f4ed;
+  --mostarda: #d17c33;
+  --marrom: #8c5121;
+  --rosa: #d79c9a;
+  --agua: #819a7e;
 }
 
 
@@ -9,10 +13,8 @@ body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: var(--back);
-      background-image: url('assets/grid.png');
-      background-size: cover;
-      color: var(--color);
+      background-color: var(--verde);
+      color: var(--verde);
       /*background-repeat: repeat-x-y;*/
 }
 
@@ -34,22 +36,22 @@ body {
 }
 
 hr {
-  border-top: 1px dashed var(--color) !important;
+  border-top: 1px dashed var(--verde) !important;
   border-bottom: 0px;
 }
 
 .sidebar {
-  height: 100% !important;
+  height: 95% !important;
+  top: 2.5% !important;
   width: 0;
   position: fixed;
   z-index: 200;
-  top: 0;
-  left: 0;
-  background-color: var(--back);
+  left: 3.5% !important;
+  background-color: var(--creme);
   overflow-x: hidden;
   transition: 0.5s;
   font-size: 17px;
-  color: var(--color);
+  color: var(--verde);
   font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
   text-align: left;
 }
@@ -82,9 +84,10 @@ hr {
       position: absolute !important;
       font-size: 20px;
       cursor: pointer;
+      left: 6% !important;
       background-color: transparent;
       margin: 35px;
-      color: var(--back);
+      color: var(--creme);
       border: none;
       z-index: 100;
       width: 45px;
@@ -108,7 +111,7 @@ hr {
 
 p {
     font-size: 13px;
-    color: bvar(--color);
+    color: bvar(--verde);
     font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 20px;
     text-align: left;
@@ -119,7 +122,7 @@ p {
 
 a {
     font-size: 13px;
-    color: var(--color);
+    color: var(--verde);
     font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 20px;
     text-align: left;
@@ -129,8 +132,8 @@ a {
 }
 
 p::selection{
-    background-color: var(--color);
-    color: var(--back);
+    background-color: var(--verde);
+    color: var(--creme);
     
 }
 
@@ -138,14 +141,14 @@ p::selection{
 #content p{
     display: none;
     font-size: 15px !important;
-    color: var(--back);
+    color: var(--creme);
     font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 20px;
     text-align: left;     
     /*position: absolute;*/
     left: 0px;
     bottom: -200px;
-    background-color: var(--color);
+    background-color: var(--verde);
     position: absolute;
     font-weight: 200;
     padding-left: 5%;
@@ -157,20 +160,20 @@ p::selection{
 }
 
 #content p::selection{
-    background-color: var(--back);
-    color: var(--color);
+    background-color: var(--creme);
+    color: var(--verde);
     
 }
 
 a::selection{
-    background-color: var(--color);
-    color: var(--back);
+    background-color: var(--verde);
+    color: var(--creme);
     
 }
 
 strong::selection{
-    background-color: var(--color) !important;
-    color: var(--back) !important;
+    background-color: var(--verde) !important;
+    color: var(--creme) !important;
 }
 
 h1 {
@@ -180,7 +183,7 @@ h1 {
 h2 {
     font-size: 20px;
     /*color: #f18388;*/
-    color: var(--color);
+    color: var(--verde);
     font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 30px;
     text-align: left !important;
@@ -190,14 +193,14 @@ h2 {
 }
 
 h2::selection{
-    background-color: var(--color);
-    color: var(--back);
+    background-color: var(--verde);
+    color: var(--creme);
     
 }
 
 h3 {
     font-size: 18px !important;
-    color: var(--color) !important;
+    color: var(--verde) !important;
     background-color: transparent !important;
     font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 20px;
@@ -208,23 +211,80 @@ h3 {
 }
 
 h3::selection{
-    background-color: var(--color);
-    color: var(--back);
+    background-color: var(--verde);
+    color: var(--creme);
     
 }
 
 strong::selection{
-    background-color: var(--back);
-    color: var(--color);
+    background-color: var(--creme);
+    color: var(--verde);
     
 }
 
-    #map {
+#ficha{
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  top: 2.5%;
+  right: 1.5%;
+  background-color: var(--creme);
+}
+
+#creme{
+  background-color: var(--creme);
+}
+
+#marrom{
+  background-color: var(--marrom);
+}
+
+#rosa{
+  background-color: var(--rosa);
+}
+
+#mostarda{
+  background-color: var(--mostarda);
+}
+
+#agua{
+  background-color: var(--agua);
+}
+
+.botao_ficha{
+  position: absolute;
+  height:19%;
+  right:96.5%;
+  cursor: pointer;
+}
+
+.botao_creme{
+  top:2.5%
+}
+.botao_marrom{
+  top:21.5%
+}
+.botao_mostarda{
+  top:40.5%
+}
+.botao_agua{
+  top:59.5%
+}
+.botao_rosa{
+  top:78.5%
+}
+
+#map {
       position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-    }
+      top: 5%;
+      right: 3%;
+      width: 92%;
+      height: 90%;
+      background-color: var(--creme);
+      background-image: url('assets/grid.png');
+      background-size: cover;
+ }
+
 
     /* Popup styling */
 
@@ -243,7 +303,7 @@ strong::selection{
       font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
       padding: 10px !important;
       width: auto;
-      background: var(--back) !important;
+      background: var(--creme) !important;
       top: -2px;
       margin-bottom: 5px;
       box-shadow: none !important;
@@ -254,7 +314,7 @@ strong::selection{
     }
 
     .mapboxgl-popup-content h3 {
-      background: var(--color);
+      background: var(--verde);
       text-align: center;
       color: #fff;
       margin: 0;
@@ -282,16 +342,16 @@ strong::selection{
       margin-top: 3px;
     }
     .mapboxgl-popup-anchor-top>.mapboxgl-popup-tip {
-      border-bottom-color: var(--color);
+      border-bottom-color: var(--verde);
     }
 .mapboxgl-popup-tip {
-    border-top-color: var(--color) !important;
-    border-bottom-color: var(--color) !important;
+    border-top-color: var(--verde) !important;
+    border-bottom-color: var(--verde) !important;
 }
 
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
     align-self: center;
-    border-top-color: var(--color) !important;
+    border-top-color: var(--verde) !important;
 }
 
 
@@ -301,7 +361,7 @@ strong::selection{
 }
 
 .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
-    border-right-color: var(--color) !important;
+    border-right-color: var(--verde) !important;
     border-top-color: #00000000 !important;
     border-bottom-color: #fff0 !important; !important;
 }
@@ -317,7 +377,7 @@ strong::selection{
 }
 
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
-    border-left-color: var(--color) !important;
+    border-left-color: var(--verde) !important;
     border-top-color: #00000000 !important;
     border-bottom-color: #00000000 !important;
 }
@@ -351,23 +411,23 @@ a.mapboxgl-ctrl-logo{
 }
 
 .mapboxgl-ctrl-group button {
-    background-color: var(--color);
+    background-color: var(--verde);
 }
 
 
 
 audio::-webkit-media-controls-panel, video::-webkit-media-controls-panel {
-    background-color: var(--back);
+    background-color: var(--creme);
 }
 
 audio{
-    background-color: var(--back);
+    background-color: var(--creme);
     opacity: 1;
     width: 100% !important;
     height: 30px !important;
 }
 
 .controls button:hover, .controls button:focus {
-   color: var(--color);
+   color: var(--verde);
 }
 

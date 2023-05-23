@@ -26,7 +26,7 @@
 <body>
     
 <div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="javascript:void(0)" class="closebtn" id="closebtn" onclick="closeNav()">×</a>
     <div class="sidebar-content">
 <h1>CHEIRO DO GOSTO</h1>
 <br>
@@ -40,8 +40,15 @@
 
 
 <img src="assets/logo.png" class="openbtn" onclick="openNav()"> 
-    
-    
+
+<img src="assets/botao_creme.png" class="botao_ficha botao_creme" onclick="creme()">
+<img src="assets/botao_marrom.png" class="botao_ficha botao_marrom" onclick="marrom()">
+<img src="assets/botao_mostarda.png" class="botao_ficha botao_mostarda" onclick="mostarda()">
+<img src="assets/botao_agua.png" class="botao_ficha botao_agua" onclick="agua()">
+<img src="assets/botao_rosa.png" class="botao_ficha botao_rosa" onclick="rosa()">
+
+
+<div id="ficha"></div>
     
 <div id="map"></div>
   
@@ -647,6 +654,42 @@ function openNav() {
 
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
+}
+
+function creme() {
+  document.getElementById("ficha").style.backgroundColor = "var(--creme)";
+  document.getElementById("mySidebar").style.width = "350px";
+  document.getElementById("mySidebar").style.backgroundColor = "var(--creme)";
+  document.getElementById("mySidebar").style.color = "var(--verde)";
+  document.getElementById("closebtn").style.color = "var(--verde)";
+}
+
+function marrom() {
+  document.getElementById("ficha").style.backgroundColor = "var(--marrom)";
+  document.getElementById("mySidebar").style.backgroundColor = "var(--marrom)";
+  document.getElementById("mySidebar").style.color = "var(--creme)";
+  document.getElementById("closebtn").style.color = "var(--creme)";
+}
+
+function mostarda() {
+  document.getElementById("ficha").style.backgroundColor = "var(--mostarda)";
+  document.getElementById("mySidebar").style.backgroundColor = "var(--mostarda)";
+  document.getElementById("mySidebar").style.color = "var(--creme)";
+  document.getElementById("closebtn").style.color = "var(--creme)";
+}
+
+function agua() {
+  document.getElementById("ficha").style.backgroundColor = "var(--agua)";
+  document.getElementById("mySidebar").style.backgroundColor = "var(--agua)";
+  document.getElementById("mySidebar").style.color = "var(--creme)";
+  document.getElementById("closebtn").style.color = "var(--creme)";
+}
+
+function rosa() {
+  document.getElementById("ficha").style.backgroundColor = "var(--rosa)";
+  document.getElementById("mySidebar").style.backgroundColor = "var(--rosa)";
+  document.getElementById("mySidebar").style.color = "var(--creme)";
+  document.getElementById("closebtn").style.color = "var(--creme)";
 }
 
 </script>
