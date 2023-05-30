@@ -39,13 +39,16 @@
 </div>
 
 
-<img src="assets/logo.png" class="openbtn" onclick="openNav()"> 
+<!--  <img src="assets/logo.png" class="openbtn" onclick="openNav()"> -->
 
 <img src="assets/botao_creme.png" class="botao_ficha botao_creme" onclick="creme()">
 <img src="assets/botao_marrom.png" class="botao_ficha botao_marrom" onclick="marrom()">
 <img src="assets/botao_mostarda.png" class="botao_ficha botao_mostarda" onclick="mostarda()">
 <img src="assets/botao_agua.png" class="botao_ficha botao_agua" onclick="agua()">
 <img src="assets/botao_rosa.png" class="botao_ficha botao_rosa" onclick="rosa()">
+
+
+<a href="https://instagram.com" target="_blank"><img src="assets/instagram.png" class="social_logo"></a>
 
 
 <div id="ficha"></div>
@@ -78,9 +81,9 @@
       container: 'map', // container id
       style: 'mapbox://styles/saralgc/clhkcc2vc01lp01qy8fmi7wmn',
       center: [-43.95857, -19.87472], // starting position
-      zoom: 11.8,// starting zoom
+      zoom: 11.7,// starting zoom
       minZoom: 11.3,
-      maxZoom: 14,  
+      maxZoom: 13.9,  
       pitch: 0, // pitc3 in degrees
       bearing: -92, // bearing in degrees
       transformRequest: transformRequest,
@@ -90,16 +93,36 @@
     $(document).ready(function () {
       $.ajax({
         type: "GET",
-        //YOUR TURN: Replace with csv export link
-        //https://www.mapbox.com/impact-tools/sheet-mapper
-        url:'assets/boiada.csv',
+        url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=VIDEOS',
         dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
       });
+      
+      $.ajax({
+        type: "GET",
+        url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=FOTOS',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON2(csvData); }
+      });
+
+      $.ajax({
+        type: "GET",
+        url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=SONS',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON3(csvData); }
+      });
+
+      $.ajax({
+        type: "GET",
+        url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=RECEITAS',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON4(csvData); }
+      });
 
 
+      // RECEITAS
 
-      function makeGeoJSON(csvData) {
+      function makeGeoJSON4(csvData) {
         csv2geojson.csv2geojson(csvData, {
           latfield: 'Latitude',
           lonfield: 'Longitude',
@@ -107,213 +130,467 @@
         }, function (err, data) {
           
           map.on('load', function () {
+                      
             map.loadImage(
-             'assets/vaca.png',
+             'assets/receita.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r1', image);
+            });
+              
+            map.loadImage(
+             'assets/receita2.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r2', image);
+            });  
+              
+            map.loadImage(
+             'assets/receita3.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r3', image);
+            });
+              
+            map.loadImage(
+             'assets/receita4.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r4', image);
+            });
+              
+            map.loadImage(
+             'assets/receita5.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r5', image);
+            });    
+               
+            map.loadImage(
+             'assets/receita6.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r6', image);
+            });  
+
+            map.loadImage(
+             'assets/receita7.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r7', image);
+            }); 
+
+            map.loadImage(
+             'assets/receita8.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('r8', image);
+            }); 
+
+
+            // LAYER
+            map.addLayer({
+              'id': 'Receitas',
+              'type': 'symbol',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': '{Icon}',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
+              }
+            });        
+
+            map.on('click', 'Receitas', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+
+                var description = `<h2>`+e.features[0].properties.Titulo +`</h2><p>`+e.features[0].properties.Ingredientes +`</p><br><p>`+e.features[0].properties.Receita +`</p>`;
+
+
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                marrom();
+
+                new mapboxgl.Popup({className: 'popupReceitas'})
+                  .setLngLat(coordinates)
+                  .setHTML(description)
+                  .addTo(map);
+
+            });
+
+            map.on('mouseenter', 'Receitas', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'Receitas', function () {
+              map.getCanvas().style.cursor = '';
+            });
+
+             map.setLayoutProperty('Receitas', 'icon-size', 
+            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
+            
+          });
+
+        });
+      };     
+
+      // SONS
+
+      function makeGeoJSON3(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+          
+          map.on('load', function () {
+                      
+            map.loadImage(
+             'assets/som.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s1', image);
+            });
+            
+            map.loadImage(
+             'assets/som2.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s2', image);
+            });
+              
+            map.loadImage(
+             'assets/som3.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s3', image);
+            });
+              
+            map.loadImage(
+             'assets/som4.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s4', image);
+            });
+              
+            map.loadImage(
+             'assets/som5.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s5', image);
+            });
+              
+            map.loadImage(
+             'assets/som6.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s6', image);
+            });
+              
+            map.loadImage(
+             'assets/som7.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s7', image);
+            });
+              
+            map.loadImage(
+             'assets/som8.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('s8', image);
+            });
+
+
+            // LAYER
+            map.addLayer({
+              'id': 'Sons',
+              'type': 'symbol',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': '{Icon}',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
+              }
+
+            });        
+
+            map.on('click', 'Sons', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+
+                //var description = `<iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/`+e.features[0].properties.Embed +`&color=%23F6AE2D&inverse=false&auto_play=false&show_user=false"></iframe>`;
+                var description = '<audio controls style="width:100%;" controlsList="nodownload" autoplay><source src="../assets/sounds/' + e.features[0].properties.Som + '.mp3" type="audio/mpeg"></audio>';
+
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                rosa();
+
+                new mapboxgl.Popup({className: 'popupSom'})
+                  .setLngLat(coordinates)
+                  .setHTML(description)
+                  .addTo(map);
+            });
+
+            map.on('mouseenter', 'Sons', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'Sons', function () {
+              map.getCanvas().style.cursor = '';
+            });
+
+             map.setLayoutProperty('Sons', 'icon-size', 
+            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
+            
+          });
+
+        });
+      };     
+      
+      // FOTOS
+
+      function makeGeoJSON2(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+          
+          map.on('load', function () {
+                      
+            map.loadImage(
+             'assets/fotos.png',
               function(error, image) {
               if (error) throw error;
               map.addImage('1', image);
             });
-              
             
             map.loadImage(
-             'assets/vaca2.png',
+             'assets/fotos2.png',
               function(error, image) {
               if (error) throw error;
               map.addImage('2', image);
             });
               
             map.loadImage(
-             'assets/vaca3.png',
+             'assets/fotos3.png',
               function(error, image) {
               if (error) throw error;
               map.addImage('3', image);
             });
               
             map.loadImage(
-             'assets/vaca4.png',
+             'assets/fotos4.png',
               function(error, image) {
               if (error) throw error;
               map.addImage('4', image);
             });
-              
-            map.loadImage(
-             'assets/vaca5.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('5', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca6.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('6', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca7.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('7', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca8.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('8', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca9.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('9', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca10.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('10', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca11.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('11', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca12.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('12', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca13.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('13', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca14.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('14', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca15.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('15', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca16.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('16', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca17.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('17', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca18.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('18', image);
-            });  
-              
-            map.loadImage(
-             'assets/vaca19.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('19', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca20.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('20', image);
-            });
-              
-            map.loadImage(
-             'assets/vaca21.png',
-              function(error, image) {
-              if (error) throw error;
-              map.addImage('21', image);
-            });    
-              
+
+            // LAYER
             map.addLayer({
-              'id': 'csvData',
+              'id': 'Fotos',
               'type': 'symbol',
               'source': {
                 'type': 'geojson',
                 'data': data
               },
-              'layout': {
-                'icon-image': '{Vaca}',
-                'icon-anchor': 'bottom-left', // point of the icon which will correspond to marker's location
-                "icon-allow-overlap": true,
-                //'icon-size': 0.025
-              }
-             });
 
-            // When a click event occurs on a feature in the csvData layer, open a popup at the
-            // location of the feature, with description HTML from its properties.
-            
-            map.on('click', 'csvData', function (e) {
-              var coordinates = e.features[0].geometry.coordinates.slice();
-              var description = `<audio controls` + e.features[0].properties.Vaca + `()" style="width:100%;" controlsList="nodownload" autoplay><source src="assets/sounds/` + e.features[0].properties.Audio + `.mp3" type="audio/mpeg"></audio>` + `<h3>` +  e.features[0].properties.Dia + ' | ' + e.features[0].properties.Lugar + `</h3>` + `<h2>` + e.features[0].properties.Titulo + `</h2>`+ `<p>` + e.features[0].properties.Descricao + `</p>` ;
-                
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
-                
-              //add Popup to map
-              new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': '{Icon}',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
+              }
+            });        
+
+            map.on('click', 'Fotos', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+
+                var description = `<iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/`+e.features[0].properties.Embed +`&color=%23F6AE2D&inverse=false&auto_play=false&show_user=false"></iframe>`;
+
+
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                mostarda();
+
+                new mapboxgl.Popup({className: 'popupFotos'})
+                  .setLngLat(coordinates)
+                  .setHTML(description)
+                  .addTo(map);
             });
-               
+
+            map.on('mouseenter', 'Fotos', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'Fotos', function () {
+              map.getCanvas().style.cursor = '';
+            });
+
+             map.setLayoutProperty('Fotos', 'icon-size', 
+            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
+            
+          });
+
+        });
+      };      
+      
+      
+      function makeGeoJSON(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+        
+                        
+          map.on('load', function () {
+            map.loadImage(
+             'assets/video1.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('v1', image);
+            });
               
-         map.setLayoutProperty('csvData', 'icon-size', 
-            ['interpolate', ['linear'], ['zoom'],
-              0,
-              //TAMANHO AO ZOOM 0
-              0.04,
-              8,
-              //TAMANHO AO ZOOM 7
-              0.12,
-              11,
-              0.25,
-              24,
-              //TAMANHO AO ZOOM 24
-              0.35
-            ]);
+            map.loadImage(
+             'assets/video2.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('v2', image);
+            });
               
+            map.loadImage(
+             'assets/video3.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('v3', image);
+            });
+              
+            map.loadImage(
+             'assets/video4.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('v4', image);
+            });
+
+            // LAYER
+            map.addLayer({
+              'id': 'Videos',
+              'type': 'symbol',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': '{Icon}',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
+              }
+            });        
+
+            map.on('click', 'Videos', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+
+                var description = `<iframe src="https://player.vimeo.com/video/`+e.features[0].properties.Link +`?portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+
+
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+
+                agua();
+
+                new mapboxgl.Popup({className: 'popupVideo'})
+                  .setLngLat(coordinates)
+                  .setHTML(description)
+                  .addTo(map);
+            });
+
+            map.on('mouseenter', 'Videos', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'Videos', function () {
+              map.getCanvas().style.cursor = 'default';
+            });
+
+             map.setLayoutProperty('Videos', 'icon-size', 
+            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
               
           });
 
         });
       };
       
-      
     });
+     
+  // TOGGLEABLE LAYERS 
+  // https://stackoverflow.com/questions/61514972/mapbox-visibility-none-for-all-layers-when-one-is-visible
 
-      
+  /*
+    map.on('idle', () => {
+      var toggleableLayerIds = ['Receitas', 'Sons', 'Fotos', 'Videos'];
+      var banner = ['assets/botao_marrom.png', 'assets/botao_rosa.png', 'assets/botao_mostarda.png', 'assets/botao_agua.png'];
+            // set up the corresponding toggle button for each layer
+            for (var i = 0; i < toggleableLayerIds.length; i++) {
+                var id = toggleableLayerIds[i];
+                 var img = document.createElement('img');
+                 img.src = banner[i];
+                 img.width = "50";
+                 var check = document.createElement('img');
+                 check.src = 'assets/som.png';  
+                 check.width = "25"; 
+                 check.style.paddingTop = "40px";
+                 var title = document.createElement('p');
+                 title.textContent = id;
+                 var link = document.createElement('a');
+                 link.href = '#';
+                 link.className = 'active';
+                 link.appendChild(check);
+                 link.appendChild(img);
+                 link.appendChild(title);
+                 link.onclick = function(e) {
+                 var clickedLayer = this.textContent;
+                 e.preventDefault();
+                 e.stopPropagation();
+
+                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+                    // toggle layer visibility by changing the layout object's visibility property
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                    }
+                };
+
+                var layers = document.getElementById('menu');
+                layers.appendChild(link);
+            }
+      });  
+
+*/
+
       // SANTA TEREZA
        
         map.on('load', () => {
@@ -601,47 +878,7 @@
         );
 
     });
-
-
-    // quintal teste  -19.86184 -44.00128
-    map.on('load', () => {
-        // Load an image from an external URL.
-        map.loadImage(
-        'assets/quintal.png',
-            (error, image) => {
-                if (error) throw error;
-                // Add the image to the map style.
-                map.addImage('quintal', image);
-                // Add a data source containing one point feature.
-                map.addSource('point5', {
-                    'type': 'geojson',
-                    'data': {
-                        'type': 'FeatureCollection',
-                        'features': [
-                        {
-                            'type': 'Feature',
-                            'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-44.02694, -19.87214]
-                            }
-                        }]
-                    }
-                });
-                // Add a layer to use the image to represent the data.
-                map.addLayer({
-                    'id': 'quintal',
-                    'type': 'symbol',
-                    'source': 'point5', 
-                    'layout': {
-                        'icon-anchor': 'top-left', 
-                        "icon-allow-overlap": true,
-                        'icon-image': 'quintal',
-                        'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.1, 14, 1.2]
-                    }
-                });
-            }
-        );
-    });  
+ 
 
     // map.scrollZoom.disable(); 
 

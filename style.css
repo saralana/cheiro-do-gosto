@@ -253,7 +253,7 @@ strong::selection{
 
 .botao_ficha{
   position: absolute;
-  height:19%;
+  height:17.5%;
   right:96.5%;
   cursor: pointer;
 }
@@ -262,16 +262,23 @@ strong::selection{
   top:2.5%
 }
 .botao_marrom{
-  top:21.5%
+  top:20%
 }
 .botao_mostarda{
-  top:40.5%
+  top:37.5%
 }
 .botao_agua{
-  top:59.5%
+  top:55%
 }
 .botao_rosa{
-  top:78.5%
+  top:72.5%
+}
+
+.social_logo{
+  position: absolute;
+  left:1%;
+  bottom:2.5%;
+  width:2%;
 }
 
 #map {
@@ -302,12 +309,66 @@ strong::selection{
     .mapboxgl-popup-content {
       font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
       padding: 10px !important;
-      width: auto;
-      background: var(--creme) !important;
       top: -2px;
       margin-bottom: 5px;
       box-shadow: none !important;
     }
+
+    .popupSom .mapboxgl-popup-content {
+      background: var(--rosa) !important;
+      width: auto;
+    }
+
+    .popupVideo .mapboxgl-popup-content {
+      background: var(--agua) !important;
+      width: auto;
+    }
+
+    .popupFotos .mapboxgl-popup-content {
+      background: var(--mostarda) !important;
+      width: 40vh;
+      height: auto;
+    }
+
+    .mapboxgl-map .popupReceitas{
+      background: var(--marrom) !important;
+      transform: none !important;
+      position: fixed !important;
+      left: 5% !important;
+      bottom:auto !important;
+      top: 4% !important;
+      right: auto !important;
+      height: 90vh !important;
+      margin: 0 !important;
+  }
+
+
+  .popupReceitas .mapboxgl-popup-content {
+    background: var(--marrom) !important;
+    color: var(--creme) !important;
+  }
+
+  .popupReceitas .mapboxgl-popup-content h2 {
+    color: var(--creme) !important;
+  }
+
+  .mapboxgl-map .popupReceitas .mapboxgl-popup-tip{
+    display:none !important;
+  }
+
+    .mapboxgl-map .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip, 
+    .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip  .popupReceitas{
+        display:none !important;
+    }
+
+
 
     .mapboxgl-popup-content-wrapper {
       padding: 1%;
@@ -417,14 +478,15 @@ a.mapboxgl-ctrl-logo{
 
 
 audio::-webkit-media-controls-panel, video::-webkit-media-controls-panel {
-    background-color: var(--creme);
+    background-color: var(--rosa);
 }
 
 audio{
-    background-color: var(--creme);
+    background-color: var(--rosa);
+    color: var(--rosa);
     opacity: 1;
-    width: 100% !important;
-    height: 30px !important;
+    width: 200px !important;
+    height: 20px !important;
 }
 
 .controls button:hover, .controls button:focus {
