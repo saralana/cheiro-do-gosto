@@ -493,3 +493,43 @@ audio{
    color: var(--verde);
 }
 
+
+#menu {
+  background: transparent;
+  position: absolute;
+  z-index: 1;
+  top: 42vh;
+  left: -18.5vw;
+  border-radius: 5px;
+  width: 85vh;
+  height: 10%;
+  border: 1px solid pink);
+  font-family: 'Open Sans', sans-serif;
+  transform: rotate(-90deg);
+}
+
+#menu a {
+  font-size: 13px;
+  color: var(--creme);
+  display: inline-block;
+  margin: auto;
+  width: 20%;
+  text-decoration: none;
+  text-align: center;
+}
+
+#menu a:last-child {
+  border: none;
+}
+
+#menu a:hover {
+  color: var(--verde);
+}
+
+#menu a.active {
+  color: var(--verde);
+}
+
+#menu a.active:hover {
+  color: var(--verde);
+}

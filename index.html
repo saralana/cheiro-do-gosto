@@ -42,20 +42,26 @@
 <!--  <img src="assets/logo.png" class="openbtn" onclick="openNav()"> -->
 
 <img src="assets/botao_creme.png" class="botao_ficha botao_creme" onclick="creme()">
-<img src="assets/botao_marrom.png" class="botao_ficha botao_marrom" onclick="marrom()">
-<img src="assets/botao_mostarda.png" class="botao_ficha botao_mostarda" onclick="mostarda()">
-<img src="assets/botao_agua.png" class="botao_ficha botao_agua" onclick="agua()">
-<img src="assets/botao_rosa.png" class="botao_ficha botao_rosa" onclick="rosa()">
+<img src="assets/botao_marrom.png" class="botao_ficha botao_marrom">
+<img src="assets/botao_mostarda.png" class="botao_ficha botao_mostarda">
+<img src="assets/botao_agua.png" class="botao_ficha botao_agua">
+<img src="assets/botao_rosa.png" class="botao_ficha botao_rosa">
 
+<!--  
+<img src="assets/botao_marrom.png" class="botao_ficha botao_marrom" onclick= "ficha(var(--marrom))">
+<img src="assets/botao_mostarda.png" class="botao_ficha botao_mostarda" onclick="ficha(var(--mostarda))">
+<img src="assets/botao_agua.png" class="botao_ficha botao_agua" onclick="ficha(var(--agua))">
+<img src="assets/botao_rosa.png" class="botao_ficha botao_rosa" onclick="ficha(var(--rosa))">
+ -->
 
 <a href="https://instagram.com" target="_blank"><img src="assets/instagram.png" class="social_logo"></a>
 
 
 <div id="ficha"></div>
-    
+<nav id="menu"></nav>
 <div id="map"></div>
   
-  <script>
+<script>
     var geocoder = new MapboxGeocoder({
        accessToken: mapboxgl.accessToken,
        mapboxgl: mapboxgl
@@ -545,51 +551,48 @@
   // TOGGLEABLE LAYERS 
   // https://stackoverflow.com/questions/61514972/mapbox-visibility-none-for-all-layers-when-one-is-visible
 
-  /*
-    map.on('idle', () => {
-      var toggleableLayerIds = ['Receitas', 'Sons', 'Fotos', 'Videos'];
-      var banner = ['assets/botao_marrom.png', 'assets/botao_rosa.png', 'assets/botao_mostarda.png', 'assets/botao_agua.png'];
-            // set up the corresponding toggle button for each layer
-            for (var i = 0; i < toggleableLayerIds.length; i++) {
-                var id = toggleableLayerIds[i];
-                 var img = document.createElement('img');
-                 img.src = banner[i];
-                 img.width = "50";
-                 var check = document.createElement('img');
-                 check.src = 'assets/som.png';  
-                 check.width = "25"; 
-                 check.style.paddingTop = "40px";
-                 var title = document.createElement('p');
-                 title.textContent = id;
-                 var link = document.createElement('a');
-                 link.href = '#';
-                 link.className = 'active';
-                 link.appendChild(check);
-                 link.appendChild(img);
-                 link.appendChild(title);
-                 link.onclick = function(e) {
-                 var clickedLayer = this.textContent;
-                 e.preventDefault();
-                 e.stopPropagation();
+    // enumerate ids of the layers
+    var toggleableLayerIds = ['Sons', 'Videos', 'Fotos', 'Receitas', 'Cheiro do Gosto'];
 
-                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+    // set up the corresponding toggle button for each layer
+    for (var i = 0; i < toggleableLayerIds.length; i++) {
+        var id = toggleableLayerIds[i];
+          var link = document.createElement('a');
+          link.href = '#';
+          link.className = '';
+          link.textContent = id;
 
-                    // toggle layer visibility by changing the layout object's visibility property
-                    if (visibility === 'visible') {
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                        this.className = '';
-                    } else {
-                        this.className = 'active';
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-                    }
-                };
-
-                var layers = document.getElementById('menu');
-                layers.appendChild(link);
+        link.onclick = function(e) {
+            var clickedLayer = this.textContent;
+            e.preventDefault();
+            e.stopPropagation(); 
+            for (var j = 0; j < toggleableLayerIds.length; j++) {
+                if (clickedLayer === toggleableLayerIds[j]) {
+                	layers.children[j].className = 'active';
+                	map.setLayoutProperty(toggleableLayerIds[j], 'visibility', 'visible');
+                  if (j ==0) { ficha("var(--rosa)"); }
+                  if (j ==1) { ficha("var(--agua)"); }
+                  if (j ==2) { ficha("var(--mostarda)"); }
+                  if (j ==3) { ficha("var(--marrom)"); }
+                  if (j ==4) { 
+                    creme(); 
+                	  map.setLayoutProperty(toggleableLayerIds[0], 'visibility', 'visible');
+                	  map.setLayoutProperty(toggleableLayerIds[1], 'visibility', 'visible');
+                	  map.setLayoutProperty(toggleableLayerIds[2], 'visibility', 'visible');
+                	  map.setLayoutProperty(toggleableLayerIds[3], 'visibility', 'visible');
+                  }
+                }	
+                else {
+                	layers.children[j].className = '';
+                	map.setLayoutProperty(toggleableLayerIds[j], 'visibility', 'none');
+                }
             }
-      });  
+        };
 
-*/
+        var layers = document.getElementById('menu');
+        layers.appendChild(link);
+        }
+
 
       // SANTA TEREZA
        
@@ -893,6 +896,11 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
 }
 
+
+function ficha(cor) {
+  document.getElementById("ficha").style.backgroundColor = cor;
+}
+
 function creme() {
   document.getElementById("ficha").style.backgroundColor = "var(--creme)";
   document.getElementById("mySidebar").style.width = "350px";
@@ -901,6 +909,7 @@ function creme() {
   document.getElementById("closebtn").style.color = "var(--verde)";
 }
 
+ /*
 function marrom() {
   document.getElementById("ficha").style.backgroundColor = "var(--marrom)";
   document.getElementById("mySidebar").style.backgroundColor = "var(--marrom)";
@@ -927,7 +936,7 @@ function rosa() {
   document.getElementById("mySidebar").style.backgroundColor = "var(--rosa)";
   document.getElementById("mySidebar").style.color = "var(--creme)";
   document.getElementById("closebtn").style.color = "var(--creme)";
-}
+}*/
 
 </script>
 
