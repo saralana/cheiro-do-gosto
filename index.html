@@ -48,7 +48,7 @@
 <img src="assets/botao_rosa.png" class="botao_ficha botao_rosa">
 
 <!--  
-<img src="assets/botao_marrom.png" class="botao_ficha botao_marrom" onclick= "ficha(var(--marrom))">
+<img src="assets/botao_marrom.png" class="botao_ficha botao_marrom" onclick=>
 <img src="assets/botao_mostarda.png" class="botao_ficha botao_mostarda" onclick="ficha(var(--mostarda))">
 <img src="assets/botao_agua.png" class="botao_ficha botao_agua" onclick="ficha(var(--agua))">
 <img src="assets/botao_rosa.png" class="botao_ficha botao_rosa" onclick="ficha(var(--rosa))">
@@ -87,7 +87,7 @@
       container: 'map', // container id
       style: 'mapbox://styles/saralgc/clhkcc2vc01lp01qy8fmi7wmn',
       center: [-43.95857, -19.87472], // starting position
-      zoom: 11.7,// starting zoom
+      zoom: 11.4,// starting zoom
       minZoom: 11.3,
       maxZoom: 13.9,  
       pitch: 0, // pitc3 in degrees
@@ -221,7 +221,7 @@
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
 
-                marrom();
+                /* marrom(); */
 
                 new mapboxgl.Popup({className: 'popupReceitas'})
                   .setLngLat(coordinates)
@@ -239,7 +239,7 @@
             });
 
              map.setLayoutProperty('Receitas', 'icon-size', 
-            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
+            ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
             
           });
 
@@ -342,7 +342,7 @@
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
 
-                rosa();
+                /* rosa(); */
 
                 new mapboxgl.Popup({className: 'popupSom'})
                   .setLngLat(coordinates)
@@ -359,7 +359,7 @@
             });
 
              map.setLayoutProperty('Sons', 'icon-size', 
-            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
+            ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
             
           });
 
@@ -432,7 +432,7 @@
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
 
-                mostarda();
+               /* mostarda();*/
 
                 new mapboxgl.Popup({className: 'popupFotos'})
                   .setLngLat(coordinates)
@@ -449,7 +449,7 @@
             });
 
              map.setLayoutProperty('Fotos', 'icon-size', 
-            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
+            ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
             
           });
 
@@ -521,8 +521,7 @@
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
 
-
-                agua();
+                /*agua();*/
 
                 new mapboxgl.Popup({className: 'popupVideo'})
                   .setLngLat(coordinates)
@@ -539,7 +538,7 @@
             });
 
              map.setLayoutProperty('Videos', 'icon-size', 
-            ['interpolate', ['linear'], ['zoom'],11,0.2,14,0.65]);
+            ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
               
           });
 
@@ -560,6 +559,9 @@
           var link = document.createElement('a');
           link.href = '#';
           link.className = '';
+          if (i === 4) {
+            link.className = 'title';
+          }
           link.textContent = id;
 
         link.onclick = function(e) {
@@ -568,13 +570,13 @@
             e.stopPropagation(); 
             for (var j = 0; j < toggleableLayerIds.length; j++) {
                 if (clickedLayer === toggleableLayerIds[j]) {
-                	layers.children[j].className = 'active';
+                	//layers.children[j].className = 'active';
                 	map.setLayoutProperty(toggleableLayerIds[j], 'visibility', 'visible');
-                  if (j ==0) { ficha("var(--rosa)"); }
-                  if (j ==1) { ficha("var(--agua)"); }
-                  if (j ==2) { ficha("var(--mostarda)"); }
-                  if (j ==3) { ficha("var(--marrom)"); }
-                  if (j ==4) { 
+                  if (j == 0) { ficha("var(--rosa)"); }
+                  if (j == 1) { ficha("var(--agua)"); }
+                  if (j == 2) { ficha("var(--mostarda)"); }
+                  if (j == 3) { ficha("var(--marrom)"); }
+                  if (j == 4) { 
                     creme(); 
                 	  map.setLayoutProperty(toggleableLayerIds[0], 'visibility', 'visible');
                 	  map.setLayoutProperty(toggleableLayerIds[1], 'visibility', 'visible');
@@ -583,8 +585,10 @@
                   }
                 }	
                 else {
-                	layers.children[j].className = '';
-                	map.setLayoutProperty(toggleableLayerIds[j], 'visibility', 'none');
+                  if (j != 4) {
+                    //layers.children[j].className = '';
+                    map.setLayoutProperty(toggleableLayerIds[j], 'visibility', 'none');
+                  }
                 }
             }
         };
@@ -938,9 +942,7 @@ function rosa() {
   document.getElementById("closebtn").style.color = "var(--creme)";
 }*/
 
-</script>
-
-<script>
+/*
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -954,7 +956,7 @@ for (i = 0; i < coll.length; i++) {
       content.style.display = "block";
     }
   });
-}
+}*/
 </script>
 
           

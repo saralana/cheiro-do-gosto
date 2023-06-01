@@ -7,7 +7,117 @@
   --agua: #819a7e;
 }
 
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-Semibold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-Bold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-MediumItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-SemiboldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("../assets/fonts/LibreBodoni-BoldItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Semibold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Bold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-MediumItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-SemiboldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-BoldItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
 
 body {
       margin: 0;
@@ -15,6 +125,8 @@ body {
       height: 100%;
       background-color: var(--verde);
       color: var(--verde);
+      font-family: 'BodoniModa';
+      font-weight: 400;
       /*background-repeat: repeat-x-y;*/
 }
 
@@ -52,7 +164,6 @@ hr {
   transition: 0.5s;
   font-size: 17px;
   color: var(--verde);
-  font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
   text-align: left;
 }
 
@@ -111,8 +222,8 @@ hr {
 
 p {
     font-size: 13px;
-    color: bvar(--verde);
-    font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
+    color: var(--verde);
+    font-family: 'BodoniModa';
     line-height: 20px;
     text-align: left;
     /*position: absolute;*/
@@ -123,7 +234,6 @@ p {
 a {
     font-size: 13px;
     color: var(--verde);
-    font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 20px;
     text-align: left;
     /*position: absolute;*/
@@ -134,7 +244,6 @@ a {
 p::selection{
     background-color: var(--verde);
     color: var(--creme);
-    
 }
 
 
@@ -142,7 +251,6 @@ p::selection{
     display: none;
     font-size: 15px !important;
     color: var(--creme);
-    font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 20px;
     text-align: left;     
     /*position: absolute;*/
@@ -184,7 +292,6 @@ h2 {
     font-size: 20px;
     /*color: #f18388;*/
     color: var(--verde);
-    font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 30px;
     text-align: left !important;
     text-transform: uppercase;
@@ -202,7 +309,6 @@ h3 {
     font-size: 18px !important;
     color: var(--verde) !important;
     background-color: transparent !important;
-    font-family: 'Source Code Pro', 'Courier New', 'Lucida Sans Typewriter', monospace;
     line-height: 20px;
     text-align: left !important;
     /*position: absolute;*/
@@ -299,7 +405,8 @@ strong::selection{
       padding-bottom: 15px;
       top: -65px !important;
       max-width: 300px !important;
-      margin-left: 50px !important
+      margin-left: 50px !important;
+      overflow-y: scroll;
     }
 
     .mapboxgl-popup-close-button {
@@ -307,11 +414,12 @@ strong::selection{
     }
 
     .mapboxgl-popup-content {
-      font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+      font: 400 15px/22px 'BodoniModa';
       padding: 10px !important;
       top: -2px;
       margin-bottom: 5px;
       box-shadow: none !important;
+      overflow-y: scroll;
     }
 
     .popupSom .mapboxgl-popup-content {
@@ -332,15 +440,23 @@ strong::selection{
 
     .mapboxgl-map .popupReceitas{
       background: var(--marrom) !important;
+      color: var(--creme) !important;
       transform: none !important;
       position: fixed !important;
       left: 5% !important;
       bottom:auto !important;
       top: 4% !important;
       right: auto !important;
-      height: 90vh !important;
+      height: 90% !important;
+      max-height: 90% !important;
       margin: 0 !important;
+      overflow-y: scroll !important;
+      z-index: 100;
   }
+
+  .mapboxgl-map .popupReceitas p{
+    color: var(--creme) !important;
+}
 
 
   .popupReceitas .mapboxgl-popup-content {
@@ -498,38 +614,34 @@ audio{
   background: transparent;
   position: absolute;
   z-index: 1;
-  top: 42vh;
-  left: -18.5vw;
+  top: 41.5vh;
+  left: -19vw;
   border-radius: 5px;
-  width: 85vh;
+  width: 87.5vh;
   height: 10%;
   border: 1px solid pink);
-  font-family: 'Open Sans', sans-serif;
   transform: rotate(-90deg);
 }
 
-#menu a {
-  font-size: 13px;
+#menu a {  
+  font-size: 14px;
+  line-height: 13px;
   color: var(--creme);
   display: inline-block;
-  margin: auto;
-  width: 20%;
+  margin: auto 4%;
+  width: 12%;
+  font-weight: 400;
   text-decoration: none;
   text-align: center;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-#menu a:last-child {
-  border: none;
+.title{
+  color: var(--verde) !important;
 }
 
 #menu a:hover {
-  color: var(--verde);
-}
-
-#menu a.active {
-  color: var(--verde);
-}
-
-#menu a.active:hover {
-  color: var(--verde);
+  font-weight: 900;
 }
