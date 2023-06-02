@@ -175,9 +175,10 @@ hr {
 .sidebar .closebtn {
   position: absolute;
   top: 5%;
-  font-size: 56px;
-  margin-left: auto;
+  font-size: 40px;
+  margin-right: auto;
   z-index:200;
+  font-family: sans-serif;
 }
 
  .sidebar-content{ 
@@ -362,6 +363,7 @@ strong::selection{
   height:17.5%;
   right:96.5%;
   cursor: pointer;
+  min-width: 40px;
 }
 
 .botao_creme{
@@ -614,28 +616,26 @@ audio{
   background: transparent;
   position: absolute;
   z-index: 1;
-  top: 41.5vh;
-  left: -19vw;
-  border-radius: 5px;
-  width: 87.5vh;
-  height: 10%;
-  border: 1px solid pink);
-  transform: rotate(-90deg);
+  top: 2.5vh;
+  height: 87.5%;
+  right: 97%;
+  transform: rotate(-180deg);
+  writing-mode: vertical-rl;
 }
 
 #menu a {  
-  font-size: 14px;
+  font-size: 0.8rem;
   line-height: 13px;
   color: var(--creme);
   display: inline-block;
-  margin: auto 4%;
-  width: 12%;
+  height: 11%;
   font-weight: 400;
   text-decoration: none;
   text-align: center;
   vertical-align: middle;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  margin: 4.5% 0;
 }
 
 .title{
