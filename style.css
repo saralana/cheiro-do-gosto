@@ -155,7 +155,7 @@ hr {
 .sidebar {
   height: 95% !important;
   top: 2.5% !important;
-  width: 0;
+  width: 350px;
   position: fixed;
   z-index: 200;
   left: 3.5% !important;
@@ -179,6 +179,7 @@ hr {
   margin-right: auto;
   z-index:200;
   font-family: sans-serif;
+  left: 80%;
 }
 
  .sidebar-content{ 
