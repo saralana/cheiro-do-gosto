@@ -349,6 +349,7 @@
 
                 //var description = `<iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/`+e.features[0].properties.Embed +`&color=%23F6AE2D&inverse=false&auto_play=false&show_user=false"></iframe>`;
                 var description = '<audio controls style="width:100%;" controlsList="nodownload" autoplay><source src="../assets/sounds/' + e.features[0].properties.Som + '.mp3" type="audio/mpeg"></audio>';
+                //var description = `<h2>`+e.features[0].properties.Som +`</h2>`;
 
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -358,7 +359,8 @@
 
                 //only one popup once 
                 e.originalEvent.cancelBubble2 = true;
-                if (e.originalEvent.cancelBubble) {
+                
+                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble3 || e.originalEvent.cancelBubble4) {
                     return;
                 }
 
@@ -454,7 +456,7 @@
 
                 //only one popup once 
                 e.originalEvent.cancelBubble3 = true;
-                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble2) {
+                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble2 || e.originalEvent.cancelBubble4) {
                     return;
                 }
 

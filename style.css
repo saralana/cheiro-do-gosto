@@ -411,6 +411,7 @@ strong::selection{
       margin-left: 50px !important;
       overflow-y: scroll;
       overflow-x: hidden;
+      pointer-events: auto !important;
     }
 
     .mapboxgl-popup-close-button {
