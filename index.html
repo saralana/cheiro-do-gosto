@@ -231,6 +231,9 @@
                 }
 
                 /* marrom(); */
+                
+                //only one popup once 
+                e.originalEvent.cancelBubble = true;
 
                 new mapboxgl.Popup({className: 'popupReceitas'})
                   .setLngLat(coordinates)
@@ -353,6 +356,12 @@
 
                 /* rosa(); */
 
+                //only one popup once 
+                e.originalEvent.cancelBubble2 = true;
+                if (e.originalEvent.cancelBubble) {
+                    return;
+                }
+
                 new mapboxgl.Popup({className: 'popupSom'})
                   .setLngLat(coordinates)
                   .setHTML(description)
@@ -443,6 +452,12 @@
 
                /* mostarda();*/
 
+                //only one popup once 
+                e.originalEvent.cancelBubble3 = true;
+                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble2) {
+                    return;
+                }
+
                 new mapboxgl.Popup({className: 'popupFotos'})
                   .setLngLat(coordinates)
                   .setHTML(description)
@@ -531,6 +546,12 @@
                 }
 
                 /*agua();*/
+
+                //only one popup once 
+                e.originalEvent.cancelBubble4 = true;
+                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble2 || e.originalEvent.cancelBubble3) {
+                    return;
+                }
 
                 new mapboxgl.Popup({className: 'popupVideo'})
                   .setLngLat(coordinates)
