@@ -465,6 +465,7 @@ strong::selection{
   .popupReceitas .mapboxgl-popup-content {
     background: var(--marrom) !important;
     color: var(--creme) !important;
+    margin: 5%;
   }
 
   .popupReceitas .mapboxgl-popup-content h2 {

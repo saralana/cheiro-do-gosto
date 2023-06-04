@@ -223,7 +223,7 @@
             map.on('click', 'Receitas', function (e) {
                 var coordinates = e.features[0].geometry.coordinates.slice();
 
-                var description = `<h2>`+e.features[0].properties.Titulo +`</h2><p>`+e.features[0].properties.Ingredientes +`</p><br><p>`+e.features[0].properties.Receita +`</p>`;
+                var description = `<h2>`+e.features[0].properties.Titulo +`</h2><p>INGREDIENTES</p><p>`+e.features[0].properties.Ingredientes +`</p><br><p>PREPARO</p><p>`+e.features[0].properties.Receita +`</p>`;
 
 
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
