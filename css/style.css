@@ -128,6 +128,7 @@ body {
       font-family: 'BodoniModa';
       font-weight: 400;
       /*background-repeat: repeat-x-y;*/
+      scrollbar-width: none;
 }
 
 .marker {
@@ -234,13 +235,14 @@ p {
 }
 
 a {
-    font-size: 13px;
-    color: var(--verde);
+    font-size: 30px;
+    color: var(--creme);
     line-height: 20px;
     text-align: left;
     /*position: absolute;*/
     left: 30px;
     bottom: 20px;
+    text-decoration: none !important;
 }
 
 p::selection{
@@ -397,7 +399,7 @@ strong::selection{
       width: 92%;
       height: 90%;
       background-color: var(--creme);
-      background-image: url('assets/grid.png');
+      background-image: url('../assets/grid.png');
       background-size: cover;
  }
 
@@ -406,9 +408,7 @@ strong::selection{
 
     .mapboxgl-popup {
       padding-bottom: 15px;
-      top: -65px !important;
-      max-width: 300px !important;
-      margin-left: 50px !important;
+      max-width: 30vw !important;
       overflow-y: scroll;
       overflow-x: hidden;
       pointer-events: auto !important;
@@ -438,7 +438,6 @@ strong::selection{
 
     .popupFotos .mapboxgl-popup-content {
       background: var(--mostarda) !important;
-      width: 40vh;
       height: auto;
     }
 
@@ -537,11 +536,6 @@ strong::selection{
 }
 
 
-.mapboxgl-ctrl-group button {
-    background-color: #fdfbea;
-    cursor: url(assets/pata.svg), auto !important , auto !important ;
-}
-
 .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
     border-right-color: var(--verde) !important;
     border-top-color: #00000000 !important;
@@ -572,7 +566,7 @@ strong::selection{
 }
 
 .mapboxgl-popup-anchor-top {
-    top: 80px !important;
+    top: 10px !important;
     margin-top: 0px;
 }
 
@@ -641,10 +635,61 @@ audio{
   margin: 4.5% 0;
 }
 
+.sidebar a{
+  color: var(--verde);
+}
+
 .title{
   color: var(--verde) !important;
 }
 
 #menu a:hover {
   font-weight: 900;
+}
+
+
+
+.popup {
+  text-align: center;
+}
+
+.popup .slideshow .image {
+  display: none;
+}
+
+.popup .slideshow .image.active {
+  display: block;
+}
+
+.popup .slideshow img {
+  width: 100%;
+}
+
+.popup .slideshow .caption {
+  background: #ffe62c;
+  padding: 10px;
+}
+
+.popup .cycle {
+  padding: 10px 0 20px;
+  position: absolute !important;
+  top: 50%;
+}
+
+.popup .cycle a{
+  font-size: 50px !important;
+  color: var(--mostarda);
+  position: absolute !important;
+}
+
+.popup .cycle a.prev {
+ /* float: left;*/
+ position: absolute !important;
+ left: 10px !important;
+}
+
+.popup .cycle a.next {
+  /* float: right; */
+  position: absolute !important;
+  left: 380px !important;
 }
