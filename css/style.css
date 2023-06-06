@@ -128,7 +128,7 @@ body {
       font-family: 'BodoniModa';
       font-weight: 400;
       /*background-repeat: repeat-x-y;*/
-      scrollbar-width: none;
+      scrollbar-width: none !important;
 }
 
 .marker {
@@ -408,10 +408,11 @@ strong::selection{
 
     .mapboxgl-popup {
       padding-bottom: 15px;
-      max-width: 30vw !important;
+      max-width: 30vw;
       overflow-y: scroll;
       overflow-x: hidden;
       pointer-events: auto !important;
+      scrollbar-width: none !important;
     }
 
     .mapboxgl-popup-close-button {
@@ -434,6 +435,12 @@ strong::selection{
     .popupVideo .mapboxgl-popup-content {
       background: var(--agua) !important;
       width: auto;
+      height: 100%;
+    }
+
+    .mapboxgl-map .popupVideo{
+        min-width: 30vw !important;
+        height: 35vh;
     }
 
     .popupFotos .mapboxgl-popup-content {
@@ -453,8 +460,34 @@ strong::selection{
       height: 90% !important;
       max-height: 90% !important;
       margin: 0 !important;
+      min-width: 30vw !important;
       z-index: 100;
   }
+
+  .mapboxgl-map .popupFotos{
+      min-width: 30vw !important;
+  }
+
+
+
+  /*
+  .mapboxgl-map .popupFotos{
+    background: var(--mostarda) !important;
+    color: var(--creme) !important;
+    transform: none !important;
+    position: fixed !important;
+    left: 5% !important;
+    bottom:auto !important;
+    top: 4% !important;
+    right: auto !important;
+    height: 90% !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    margin: 0 !important;
+    z-index: 100;
+}
+*/
 
   .mapboxgl-map .popupReceitas p{
     color: var(--creme) !important;
