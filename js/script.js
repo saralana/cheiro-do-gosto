@@ -39,7 +39,7 @@ var geocoder = new MapboxGeocoder({
    style: 'mapbox://styles/saralgc/clhkcc2vc01lp01qy8fmi7wmn',
    center: [-43.95857, -19.87472], // starting position
    zoom: 11.3,// starting zoom
-   minZoom: 10,
+   minZoom: 11.2,
    maxZoom: 13.5,  
    pitch: 0, // pitc3 in degrees
    bearing: -92, // bearing in degrees
@@ -209,7 +209,7 @@ var geocoder = new MapboxGeocoder({
          });
 
           map.setLayoutProperty('Receitas', 'icon-size', 
-         ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
+         ['interpolate', ['linear'], ['zoom'],11,0.08,14,0.4]);
          
        });
 
@@ -228,60 +228,194 @@ var geocoder = new MapboxGeocoder({
        map.on('load', function () {
                    
          map.loadImage(
-          'assets/som.png',
+          'assets/som_frango.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s1', image);
+           map.addImage('som_frango', image);
          });
          
          map.loadImage(
-          'assets/som2.png',
+          'assets/som_faca.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s2', image);
+           map.addImage('som_faca', image);
          });
            
          map.loadImage(
-          'assets/som3.png',
+          'assets/som_bacalhau.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s3', image);
+           map.addImage('som_bacalhau', image);
          });
            
          map.loadImage(
-          'assets/som4.png',
+          'assets/som_ovo.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s4', image);
+           map.addImage('som_ovo', image);
          });
            
          map.loadImage(
-          'assets/som5.png',
+          'assets/som_banana.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s5', image);
+           map.addImage('som_banana', image);
          });
            
          map.loadImage(
-          'assets/som6.png',
+          'assets/som_couve.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s6', image);
+           map.addImage('som_couve', image);
          });
            
          map.loadImage(
-          'assets/som7.png',
+          'assets/som_radio.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s7', image);
+           map.addImage('som_radio', image);
          });
            
          map.loadImage(
-          'assets/som8.png',
+          'assets/som_cara.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('s8', image);
+           map.addImage('som_cara', image);
          });
+  
+         map.loadImage(
+            'assets/som_feijao.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_feijao', image);
+           });
+
+           map.loadImage(
+            'assets/som_flor.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_flor', image);
+           });
+
+           map.loadImage(
+            'assets/som_arroz.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_arroz', image);
+           });
+
+           map.loadImage(
+            'assets/som_quiabo.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_quiabo', image);
+           });
+
+           map.loadImage(
+            'assets/som_jilo.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_jilo', image);
+           });
+
+           map.loadImage(
+            'assets/som_laranja.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_laranja', image);
+           });
+
+           map.loadImage(
+            'assets/som_canela.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_canela', image);
+           });
+
+           map.loadImage(
+            'assets/som_agriao.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_agriao', image);
+           });
+
+           map.loadImage(
+            'assets/som_colher.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_colher', image);
+           });
+
+           map.loadImage(
+            'assets/som_vaca.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_vaca', image);
+           });
+
+           map.loadImage(
+            'assets/som_mamao.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_mamao', image);
+           });
+
+           map.loadImage(
+            'assets/som_paudoce.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_paudoce', image);
+           });
+
+           map.loadImage(
+            'assets/som_sol.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_sol', image);
+           });
+
+           map.loadImage(
+            'assets/som_gengibre.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_gengibre', image);
+           });
+
+           map.loadImage(
+            'assets/som_panela.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_panela', image);
+           });
+
+           map.loadImage(
+            'assets/som_porco.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_porco', image);
+           });
+
+           map.loadImage(
+            'assets/som_salsinha.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_salsinha', image);
+           });
+
+
+           map.loadImage(
+            'assets/som_alho.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_alho', image);
+           });
+
+           map.loadImage(
+            'assets/som_fogo.png',
+             function(error, image) {
+             if (error) throw error;
+             map.addImage('som_fogo', image);
+           });
 
 
          // LAYER
@@ -337,7 +471,7 @@ var geocoder = new MapboxGeocoder({
          });
 
           map.setLayoutProperty('Sons', 'icon-size', 
-         ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
+         ['interpolate', ['linear'], ['zoom'],11,0.05,14,0.25]);
          
        });
 
@@ -407,10 +541,22 @@ var geocoder = new MapboxGeocoder({
              var description = '<a href="../assets/fotos/foto' + e.features[0].properties.Galeria + '_4.png"><img src="../assets/fotos/foto' + e.features[0].properties.Galeria + '_4.png"></a>';
              
              var images =  [
-                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_1.png'],
-                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_2.png'],
-                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_3.png'],
-                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_4.png']
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_1.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_2.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_3.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_4.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_5.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_6.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_7.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_8.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_9.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_10.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_11.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_12.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_13.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_14.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_15.jpg'],
+                   ['assets/fotos/foto' + e.features[0].properties.Galeria + '_16.jpg']
                    ]
              
              var slideshowContent = ""
@@ -493,7 +639,7 @@ var geocoder = new MapboxGeocoder({
          });
 
           map.setLayoutProperty('Fotos', 'icon-size', 
-         ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
+         ['interpolate', ['linear'], ['zoom'],11,0.08,14,0.4]);
          
        });
 
@@ -588,7 +734,7 @@ var geocoder = new MapboxGeocoder({
          });
 
           map.setLayoutProperty('Videos', 'icon-size', 
-         ['interpolate', ['linear'], ['zoom'],11,0.1,14,0.65]);
+         ['interpolate', ['linear'], ['zoom'],11,0.07,14,0.3]);
            
        });
 
