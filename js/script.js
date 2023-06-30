@@ -102,59 +102,59 @@ var geocoder = new MapboxGeocoder({
        map.on('load', function () {
                    
          map.loadImage(
-          'assets/receita.png',
+          'assets/receita_milho.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r1', image);
+           map.addImage('receita_milho', image);
          });
            
          map.loadImage(
-          'assets/receita2.png',
+          'assets/receita_chuchu.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r2', image);
+           map.addImage('receita_chuchu', image);
          });  
            
          map.loadImage(
-          'assets/receita3.png',
+          'assets/receita_banana.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r3', image);
+           map.addImage('receita_banana', image);
          });
            
          map.loadImage(
-          'assets/receita4.png',
+          'assets/receita_panela.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r4', image);
+           map.addImage('receita_panela', image);
          });
            
          map.loadImage(
-          'assets/receita5.png',
+          'assets/receita_jilo.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r5', image);
+           map.addImage('receita_jilo', image);
          });    
             
          map.loadImage(
-          'assets/receita6.png',
+          'assets/receita_couve.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r6', image);
+           map.addImage('receita_couve', image);
          });  
 
          map.loadImage(
-          'assets/receita7.png',
+          'assets/receita_quiabo.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r7', image);
+           map.addImage('receita_quiabo', image);
          }); 
 
          map.loadImage(
-          'assets/receita8.png',
+          'assets/receita_feijao.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('r8', image);
+           map.addImage('receita_feijao', image);
          }); 
 
 
@@ -178,7 +178,8 @@ var geocoder = new MapboxGeocoder({
          map.on('click', 'Receitar', function (e) {
              var coordinates = e.features[0].geometry.coordinates.slice();
 
-             var description = `<h2>`+e.features[0].properties.Titulo +`</h2><p>INGREDIENTES</p><p>`+e.features[0].properties.Ingredientes +`</p><br><p>PREPARO</p><p>`+e.features[0].properties.Receita +`</p>`;
+             //var description = `<h2>`+e.features[0].properties.Titulo +`</h2><p>INGREDIENTES</p><p>`+e.features[0].properties.Ingredientes +`</p><br><p>PREPARO</p><p>`+e.features[0].properties.Receita +`</p>`;
+             var description = `<p>` + e.features[0].properties.Texto + `</p>`;
              
              closeNav();
 
@@ -209,7 +210,7 @@ var geocoder = new MapboxGeocoder({
          });
 
           map.setLayoutProperty('Receitar', 'icon-size', 
-         ['interpolate', ['linear'], ['zoom'],11,0.08,14,0.4]);
+         ['interpolate', ['linear'], ['zoom'],11,0.05,14,0.25]);
          
        });
 
