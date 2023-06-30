@@ -59,32 +59,32 @@ var geocoder = new MapboxGeocoder({
 
    $.ajax({
      type: "GET",
-     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=VIDEOS',
-     url: 'assets/VIDEOS.csv',
+     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=VIDEOS',
+     //url: 'assets/VIDEOS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON(csvData); }
    });
    
    $.ajax({
      type: "GET",
-     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=FOTOS',
-     url: 'assets/FOTOS.csv',
+     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=FOTOS',
+     //url: 'assets/FOTOS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON2(csvData); }
    });
 
    $.ajax({
      type: "GET",
-     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=SONS',
-     url: 'assets/SONS.csv',
+     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=SONS',
+     //url: 'assets/SONS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON3(csvData); }
    });
 
    $.ajax({
      type: "GET",
-     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=RECEITAS',
-     url: 'assets/RECEITAS.csv',
+     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=RECEITAS',
+     //url: 'assets/RECEITAS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON4(csvData); }
    });
@@ -160,7 +160,7 @@ var geocoder = new MapboxGeocoder({
 
          // LAYER
          map.addLayer({
-           'id': 'Receitas',
+           'id': 'Receitar',
            'type': 'symbol',
            'source': {
              'type': 'geojson',
@@ -175,7 +175,7 @@ var geocoder = new MapboxGeocoder({
            }
          });        
 
-         map.on('click', 'Receitas', function (e) {
+         map.on('click', 'Receitar', function (e) {
              var coordinates = e.features[0].geometry.coordinates.slice();
 
              var description = `<h2>`+e.features[0].properties.Titulo +`</h2><p>INGREDIENTES</p><p>`+e.features[0].properties.Ingredientes +`</p><br><p>PREPARO</p><p>`+e.features[0].properties.Receita +`</p>`;
@@ -200,15 +200,15 @@ var geocoder = new MapboxGeocoder({
 
          });
 
-         map.on('mouseenter', 'Receitas', function () {
+         map.on('mouseenter', 'Receitar', function () {
            map.getCanvas().style.cursor = 'pointer';
          });
 
-         map.on('mouseleave', 'Receitas', function () {
+         map.on('mouseleave', 'Receitar', function () {
            map.getCanvas().style.cursor = '';
          });
 
-          map.setLayoutProperty('Receitas', 'icon-size', 
+          map.setLayoutProperty('Receitar', 'icon-size', 
          ['interpolate', ['linear'], ['zoom'],11,0.08,14,0.4]);
          
        });
@@ -576,7 +576,7 @@ var geocoder = new MapboxGeocoder({
                '<div class="cycle">' +
                '<a href="#" class="prev">‹</a>' +
                '<a href="#" class="next">›</a>' +
-               '</div>'
+               '</div>' +
              '</div>';
              
 
@@ -657,28 +657,28 @@ var geocoder = new MapboxGeocoder({
                      
        map.on('load', function () {
          map.loadImage(
-          'assets/video1.png',
+          '../assets/v1.png',
            function(error, image) {
            if (error) throw error;
            map.addImage('v1', image);
          });
            
          map.loadImage(
-          'assets/video2.png',
+          'assets/v2.png',
            function(error, image) {
            if (error) throw error;
            map.addImage('v2', image);
          });
            
          map.loadImage(
-          'assets/video3.png',
+          'assets/v3.png',
            function(error, image) {
            if (error) throw error;
            map.addImage('v3', image);
          });
            
          map.loadImage(
-          'assets/video4.png',
+          '../assets/v4.png',
            function(error, image) {
            if (error) throw error;
            map.addImage('v4', image);
@@ -747,7 +747,7 @@ var geocoder = new MapboxGeocoder({
 // https://stackoverflow.com/questions/61514972/mapbox-visibility-none-for-all-layers-when-one-is-visible
 
  // enumerate ids of the layers
- var toggleableLayerIds = ['Sons', 'Videos', 'Fotos', 'Receitas', 'O Cheiro do Gosto'];
+ var toggleableLayerIds = ['Sons', 'Videos', 'Fotos', 'Receitar', 'O Cheiro do Gosto'];
 
  // set up the corresponding toggle button for each layer
  for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -1089,48 +1089,3 @@ var geocoder = new MapboxGeocoder({
  });
 
  // map.scrollZoom.disable(); 
-
-/*
-function marrom() {
-document.getElementById("ficha").style.backgroundColor = "var(--marrom)";
-document.getElementById("mySidebar").style.backgroundColor = "var(--marrom)";
-document.getElementById("mySidebar").style.color = "var(--creme)";
-document.getElementById("closebtn").style.color = "var(--creme)";
-}
-
-function mostarda() {
-document.getElementById("ficha").style.backgroundColor = "var(--mostarda)";
-document.getElementById("mySidebar").style.backgroundColor = "var(--mostarda)";
-document.getElementById("mySidebar").style.color = "var(--creme)";
-document.getElementById("closebtn").style.color = "var(--creme)";
-}
-
-function agua() {
-document.getElementById("ficha").style.backgroundColor = "var(--agua)";
-document.getElementById("mySidebar").style.backgroundColor = "var(--agua)";
-document.getElementById("mySidebar").style.color = "var(--creme)";
-document.getElementById("closebtn").style.color = "var(--creme)";
-}
-
-function rosa() {
-document.getElementById("ficha").style.backgroundColor = "var(--rosa)";
-document.getElementById("mySidebar").style.backgroundColor = "var(--rosa)";
-document.getElementById("mySidebar").style.color = "var(--creme)";
-document.getElementById("closebtn").style.color = "var(--creme)";
-}*/
-
-/*
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-coll[i].addEventListener("click", function() {
- this.classList.toggle("active");
- var content = this.nextElementSibling;
- if (content.style.display === "block") {
-   content.style.display = "none";
- } else {
-   content.style.display = "block";
- }
-});
-}*/
