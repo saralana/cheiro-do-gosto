@@ -59,32 +59,32 @@ var geocoder = new MapboxGeocoder({
 
    $.ajax({
      type: "GET",
-     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=VIDEOS',
-     //url: 'assets/VIDEOS.csv',
+     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=VIDEOS',
+     url: 'assets/VIDEOS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON(csvData); }
    });
    
    $.ajax({
      type: "GET",
-     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=FOTOS',
-     //url: 'assets/FOTOS.csv',
+     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=FOTOS',
+     url: 'assets/FOTOS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON2(csvData); }
    });
 
    $.ajax({
      type: "GET",
-     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=SONS',
-     //url: 'assets/SONS.csv',
+     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=SONS',
+     url: 'assets/SONS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON3(csvData); }
    });
 
    $.ajax({
      type: "GET",
-     url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=RECEITAS',
-     //url: 'assets/RECEITAS.csv',
+     //url: 'https://docs.google.com/spreadsheets/d/1AbjMeyFH1DJFPLmaZhIlE98_KqAEJAfxgeZnqBLMNf0/gviz/tq?tqx=out:csv&sheet=RECEITAS',
+     url: 'assets/RECEITAS.csv',
      dataType: "text",
      success: function (csvData) { makeGeoJSON4(csvData); }
    });
@@ -658,32 +658,98 @@ var geocoder = new MapboxGeocoder({
                      
        map.on('load', function () {
          map.loadImage(
-          '../assets/v1.png',
+          '../assets/video_panela.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('v1', image);
+           map.addImage('video_panela', image);
          });
            
          map.loadImage(
-          'assets/v2.png',
+          'assets/video_feijao.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('v2', image);
+           map.addImage('video_feijao', image);
          });
            
          map.loadImage(
-          'assets/v3.png',
+          'assets/video_tambor.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('v3', image);
+           map.addImage('video_tambor', image);
          });
            
          map.loadImage(
-          '../assets/v4.png',
+          '../assets/video_ovo.png',
            function(error, image) {
            if (error) throw error;
-           map.addImage('v4', image);
+           map.addImage('video_ovo', image);
          });
+   
+         map.loadImage(
+          '../assets/video_vaca.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_vaca', image);
+         });
+
+         map.loadImage(
+          '../assets/video_banana.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_banana', image);
+         });
+
+         map.loadImage(
+          '../assets/video_fogo.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_fogo', image);
+         });
+
+         map.loadImage(
+          '../assets/video_milho.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_milho', image);
+         });
+
+         map.loadImage(
+          '../assets/video_quiabo.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_quiabo', image);
+         });
+
+         map.loadImage(
+          '../assets/video_paudoce.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_paudoce', image);
+         });
+
+         map.loadImage(
+          '../assets/video_porco.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_porco', image);
+         });
+
+
+         map.loadImage(
+          '../assets/video_pimenta.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_pimenta', image);
+         });
+
+
+         map.loadImage(
+          '../assets/video_arroz.png',
+           function(error, image) {
+           if (error) throw error;
+           map.addImage('video_arroz', image);
+         });
+
 
          // LAYER
          map.addLayer({
