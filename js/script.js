@@ -195,7 +195,7 @@ var geocoder = new MapboxGeocoder({
                  return;
              }
 
-             new mapboxgl.Popup({className: 'popupReceitas'})
+             new mapboxgl.Popup({closeButton: true, className: 'popupReceitas'})
                .setLngLat(coordinates)
                .setHTML(description)
                .addTo(map);
@@ -458,7 +458,7 @@ var geocoder = new MapboxGeocoder({
                  return;
              }
 
-             new mapboxgl.Popup({className: 'popupSom'})
+             new mapboxgl.Popup({closeButton: false, className: 'popupSom'})
                .setLngLat(coordinates)
                .setHTML(description)
                .addTo(map);
@@ -602,7 +602,7 @@ var geocoder = new MapboxGeocoder({
                .addTo(map); */
 
              
-             new mapboxgl.Popup({className: 'popupFotos'})
+             new mapboxgl.Popup({closeButton: true, className: 'popupFotos'})
                .setLngLat(coordinates)
                .setHTML(popupContent)
                .addTo(map); 
@@ -787,7 +787,7 @@ var geocoder = new MapboxGeocoder({
                  return;
              }
 
-             new mapboxgl.Popup({className: 'popupVideo'})
+             new mapboxgl.Popup({closeButton: false, className: 'popupVideo'})
                .setLngLat(coordinates)
                .setHTML(description)
                .addTo(map);
