@@ -16,10 +16,7 @@ var geocoder = new MapboxGeocoder({
  };
    
  mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWxnYyIsImEiOiJja2NjbTAyczkwNXA3Mnlscm5nbjN5OHZiIn0.yNcJkPBSugRlIeGkXDRlZw'; //Mapbox token 
- /*const bounds = [
-     [-43.5, -20],  // sudoeste coordinates     -20.0549/-43.8534
-     [-44.1, -19.5] // nordeste coordinates     -19.7188/-44.0452   
- ];*/
+
 
  /*
  AJUSTES DAS VARIAVEIS PARA CELULAR
@@ -34,16 +31,20 @@ var geocoder = new MapboxGeocoder({
  };
  */
 
+ const bounds = [
+     [-43.5, -20.5],  // sudoeste coordinates     -20.0549/-43.8534
+     [-44.5, -19.5] // nordeste coordinates     -19.7188/-44.0452   
+ ];
  var map = new mapboxgl.Map({
    container: 'map', // container id
    style: 'mapbox://styles/saralgc/clhkcc2vc01lp01qy8fmi7wmn',
    center: [-43.95857, -19.87472], // starting position
-   zoom: 11.3,// starting zoom
+   zoom: 11.3, // starting zoom
    minZoom: 11.2,
    maxZoom: 13.5,  
    pitch: 0, // pitc3 in degrees
    bearing: -92, // bearing in degrees
-   transformRequest: transformRequest,
+   transformRequest: transformRequest
    //maxBounds: bounds // Set the map's geographical boundaries.
  });
 

@@ -103,7 +103,6 @@ hr {
   width: 350px;
   position: fixed;
   z-index: 200;
-  left: 4% !important;
   background-color: var(--creme);
   overflow-x: hidden;
   transition: 0.5s;
@@ -278,10 +277,8 @@ strong::selection{
 
 #ficha{
   position: absolute;
-  width: 95%;
   height: 95%;
   top: 2.5%;
-  left: 4%;
   background-color: var(--creme);
 }
 
@@ -305,10 +302,59 @@ strong::selection{
   background-color: var(--agua);
 }
 
-.fichario{  
-  width: 4%;
-  position: relative;
-  height: 100vh;
+@media only screen and (min-width: 1000px) {
+
+  .sidebar {
+    left: 4% !important;
+  }
+
+  #ficha{
+    left: 4%;  
+    width: 95%;
+  }
+
+  .fichario{  
+    width: 4%;
+    position: relative;
+    height: 100vh;
+  }
+
+  #map {
+      width: 92%;
+      left: 5.5%;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .sidebar {
+    left: 7% !important;
+  }
+
+  #ficha{
+    left: 7%;
+    width: 90%;
+  }
+  
+  .fichario{  
+    width: 7%;
+    position: relative;
+    height: 100vh;
+  }
+
+  #map {
+    width: 84%;
+    left: 10%;
+  }
+
+  #menu a {
+    font-size: 1.8vw !important;
+    margin: 4.5% 0% !important;
+  }
+  .social_logo {
+    width: 20px !important;
+  }
 }
 
 .fichas{  
@@ -380,8 +426,6 @@ strong::selection{
 #map {
       position: absolute;
       top: 5%;
-      left: 5.5%;
-      width: 92%;
       height: 90%;
       background-color: var(--creme);
       background-image: url('../assets/grid.png');
