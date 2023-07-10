@@ -980,180 +980,104 @@ var geocoder = new MapboxGeocoder({
    
    //IMAGENS      
    //seta papagaio
+
+    
    map.on('load', () => {
-     // Load an image from an external URL.
-     map.loadImage(
-     'assets/seta_papagaio.png',
-         (error, image) => {
-             if (error) throw error;
-
-             // Add the image to the map style.
-             map.addImage('seta_papagaio', image);
-
-             // Add a data source containing one point feature.
-             map.addSource('point', {
-                 'type': 'geojson',
-                 'data': {
-                     'type': 'FeatureCollection',
-                     'features': [
-                     {
-                         'type': 'Feature',
-                         'geometry': {
-                         'type': 'Point',
-                         'coordinates': [-43.956, -19.973]
-                         }
-                     }]
-                 }
-             });
-
-             // Add a layer to use the image to represent the data.
-             map.addLayer({
-                 'id': 'seta_papagaio',
-                 'type': 'symbol',
-                 'source': 'point', 
-                 'layout': {
-                     'icon-anchor': 'bottom', 
-                     "icon-allow-overlap": true,
-                     'icon-image': 'seta_papagaio',
-                     'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.2, 18, 1.2]
-                 }
-             });
-         }
-     );
-
- });
+    map.addSource('papagaio_seta', {
+        'type': 'image',
+        'url': 'assets/seta_papagaio.png',
+        'coordinates': [
+            [-43.955, -19.96],
+            [-43.98, -19.96], 
+            [-43.98, -19.97], 
+            [-43.955, -19.97] 
+        ]
+        })
+        map.addLayer({
+            id: 'papagaio-seta',
+            'type': 'raster',
+            'source': 'papagaio_seta',
+            'paint': {
+            'raster-fade-duration': 0
+        }
+    });
+    
+    
+}); 
 
   // seta santa tereza
+    
   map.on('load', () => {
-     // Load an image from an external URL.
-     map.loadImage(
-     'assets/seta_santa_tereza.png',
-         (error, image) => {
-             if (error) throw error;
-
-             // Add the image to the map style.
-             map.addImage('seta_santa_tereza', image);
-
-             // Add a data source containing one point feature.
-             map.addSource('point2', {
-                 'type': 'geojson',
-                 'data': {
-                     'type': 'FeatureCollection',
-                     'features': [
-                     {
-                         'type': 'Feature',
-                         'geometry': {
-                         'type': 'Point',
-                         'coordinates': [-43.921211, -19.916446]
-                         }
-                     }]
-                 }
-             });
-
-             // Add a layer to use the image to represent the data.
-             map.addLayer({
-                 'id': 'seta_santa_tereza',
-                 'type': 'symbol',
-                 'source': 'point2', 
-                 'layout': {
-                     'icon-anchor': 'top-right', 
-                     "icon-allow-overlap": true,
-                     'icon-image': 'seta_santa_tereza',
-                     'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.1, 18, 1.2]
-                 }
-             });
-         }
-     );
-
- });
+    map.addSource('santa_tereza_seta', {
+        'type': 'image',
+        'url': 'assets/seta_santa_tereza.png',
+        'coordinates': [
+            [-43.92, -19.91],
+            [-43.91, -19.91], 
+            [-43.91, -19.935], 
+            [-43.92, -19.935] 
+        ]
+        })
+        map.addLayer({
+            id: 'santa_tereza-seta',
+            'type': 'raster',
+            'source': 'santa_tereza_seta',
+            'paint': {
+            'raster-fade-duration': 0
+        }
+    });
+    
+    
+}); 
 
 
-  // seta concordia
+  // seta concordia [-43.941908, -19.890846] || -19.85	-43.985
+   
   map.on('load', () => {
-     // Load an image from an external URL.
-     map.loadImage(
-     'assets/seta_concordia.png',
-         (error, image) => {
-             if (error) throw error;
+    map.addSource('concordia_seta', {
+        'type': 'image',
+        'url': 'assets/seta_concordia.png',
+        'coordinates': [
+            [-43.98, -19.85],
+            [-43.94, -19.85], 
+            [-43.94, -19.89], 
+            [-43.98, -19.89] 
+        ]
+        })
+        map.addLayer({
+            id: 'concordia-seta',
+            'type': 'raster',
+            'source': 'concordia_seta',
+            'paint': {
+            'raster-fade-duration': 0
+        }
+    });
+    
+    
+}); 
 
-             // Add the image to the map style.
-             map.addImage('seta_concordia', image);
-
-             // Add a data source containing one point feature.
-             map.addSource('point3', {
-                 'type': 'geojson',
-                 'data': {
-                     'type': 'FeatureCollection',
-                     'features': [
-                     {
-                         'type': 'Feature',
-                         'geometry': {
-                         'type': 'Point',
-                         'coordinates': [-43.941908, -19.890846]
-                         }
-                     }]
-                 }
-             });
-
-             // Add a layer to use the image to represent the data.
-             map.addLayer({
-                 'id': 'seta_concordia',
-                 'type': 'symbol',
-                 'source': 'point3', 
-                 'layout': {
-                     'icon-anchor': 'bottom-left', 
-                     "icon-allow-overlap": true,
-                     'icon-image': 'seta_concordia',
-                     'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.22, 18, 1.1]
-                 }
-             });
-         }
-     );
-
- });
-
-  // seta areias
+  // seta areias -19.81	-43.92 || [-43.984135, -19.770205]
   map.on('load', () => {
-     // Load an image from an external URL.
-     map.loadImage(
-     'assets/seta_areias.png',
-         (error, image) => {
-             if (error) throw error;
-
-             // Add the image to the map style.
-             map.addImage('seta_areias', image);
-
-             // Add a data source containing one point feature.
-             map.addSource('point4', {
-                 'type': 'geojson',
-                 'data': {
-                     'type': 'FeatureCollection',
-                     'features': [
-                     {
-                         'type': 'Feature',
-                         'geometry': {
-                         'type': 'Point',
-                         'coordinates': [-43.984135, -19.770205]
-                         }
-                     }]
-                 }
-             });
-
-             // Add a layer to use the image to represent the data.
-             map.addLayer({
-                 'id': 'seta_areias',
-                 'type': 'symbol',
-                 'source': 'point4', 
-                 'layout': {
-                     'icon-anchor': 'top-right', 
-                     "icon-allow-overlap": true,
-                     'icon-image': 'seta_areias',
-                     'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.22, 18, 1.1]
-                 }
-             });
-         }
-     );
-
- });
+    map.addSource('areias_seta', {
+        'type': 'image',
+        'url': 'assets/seta_areias.png',
+        'coordinates': [
+            [-43.999, -19.755],
+            [-43.925, -19.755], 
+            [-43.925, -19.795], 
+            [-43.999, -19.795] 
+        ]
+        })
+        map.addLayer({
+            id: 'areias-seta',
+            'type': 'raster',
+            'source': 'areias_seta',
+            'paint': {
+            'raster-fade-duration': 0
+        }
+    });
+    
+    
+}); 
 
  // map.scrollZoom.disable(); 
